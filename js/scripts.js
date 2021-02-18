@@ -52,3 +52,35 @@ $(document).ready(function(){
 			return false;
 		});
 });
+function sendMail(){
+    $Name = $("#name").val();
+    $Subject = $("#subject").val();
+    $email = $("#email").val();
+    $message = $("#message").val();
+    
+    $.ajax({
+        url: "PHP/mail.php",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            Email: $email,
+            Subject: $Subject,
+            Message: $message
+        },
+        success: function(result) {
+            console.log(result.status.description);
+            if (result.status.name == "ok") {
+                $("#messageStatusSuccess").modal('toggle');             
+            }
+            if (result.status.name == "Fail") {
+                $("#failedMessageReasons").empty();
+                $('#failedMessageReasons').append($("<p>" + result.status.description + "</p>"));
+                $("#messageStatusFailed").modal('toggle');        
+            }
+        
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+};

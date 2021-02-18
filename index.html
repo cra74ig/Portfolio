@@ -210,7 +210,7 @@
             
                     <!--Grid column-->
                     <div class="col-md-9 mb-md-0 mb-5 ">
-                        <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                        <form id="contact-form" name="contact-form" method="POST">
             
                             <!--Grid row-->
                             <div class="form-row align-center">
@@ -218,8 +218,9 @@
                                 <!--Grid column-->
                                 <div class="col-md-6">
                                     <div class="md-form mb-0">
-                                        <input type="text" id="name" name="name" class="form-control">
                                         <label for="name" class="">Your name</label>
+                                        <input type="text" id="name" name="name" class="form-control">
+                                        
                                     </div>
                                 </div>
                                 <!--Grid column-->
@@ -227,8 +228,9 @@
                                 <!--Grid column-->
                                 <div class="col-md-6">
                                     <div class="md-form mb-0">
-                                        <input type="text" id="email" name="email" class="form-control">
                                         <label for="email" class="">Your email</label>
+                                        <input type="email" id="email" name="email" class="form-control">
+                                        
                                     </div>
                                 </div>
                                 <!--Grid column-->
@@ -240,8 +242,9 @@
                             <div class="form-row align-center">
                                 <div class="col-md-12">
                                     <div class="md-form mb-0">
-                                        <input type="text" id="subject" name="subject" class="form-control md-textarea" rows=1>
                                         <label for="subject" class="">Subject</label>
+                                        <input type="text" id="subject" name="subject" class="form-control md-textarea" rows=1>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -254,8 +257,8 @@
                                 <div class="col-md-12">
             
                                     <div class="md-form">
-                                        <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
                                         <label for="message">Your message</label>
+                                        <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
                                     </div>
             
                                 </div>
@@ -265,7 +268,7 @@
                         </form>
             
                         <div class="text-center text-md-right">
-                            <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                            <button class="btn btn-primary " onclick="sendMail()">Send</button>
                         </div>
                         <div class="status"></div>
                     </div>
@@ -274,6 +277,33 @@
         
         </section>
         <a id="back-to-top" href="#" class="btn  btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+        <div class="modal" tabindex="-1" id="messageStatusSuccess">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Message Delivered Successfully</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" tabindex="-1" id="messageStatusFailed">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Message Delivery Failed</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="failedMessageReasons">
+                    
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
