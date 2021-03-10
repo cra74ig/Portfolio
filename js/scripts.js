@@ -65,7 +65,8 @@ function sendMail(){
         data: {
             Email: $email,
             Subject: $Subject,
-            Message: $message
+            Message: $message,
+            Name: $Name
         },
         success: function(result) {
             console.log(result.status.description);

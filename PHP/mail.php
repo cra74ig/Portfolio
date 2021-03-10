@@ -6,7 +6,8 @@
     $from = "cbutton@craigbutton.co.uk";
     $to = $_REQUEST['Email'];
     $subject = $_REQUEST['Subject'];
-    $message = $_REQUEST['Message'];
+    $message =  $_REQUEST['Message'];
+    $name = $_REQUEST['Name'];
 
     $headers = "From:" . $from. "\r\n" .  "BCC: ctbutton44@gmail.com";
     if (empty($name)) {
@@ -43,6 +44,7 @@
     }
     
     if($emailErr === 0 && $nameErr === 0 && $subjectErr === 0 && $messageErr === 0){
+        $message = "Thank you ". $name. " for sending the below message. I will get back to you as soon as I can.\nMessage:\n" . $message;
         if(mail($to,$subject,$message, $headers)) {
             
             $output['status']['code'] = "200";
